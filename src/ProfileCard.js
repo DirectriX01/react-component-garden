@@ -3,7 +3,7 @@ function ProfileCard(props) {
     return (
     <div className="card">
     <div className="card-image">
-        <figure className="image is-4by3">
+        <figure className="image is-1by1">
         <img src={props.imageSrc} alt="xyz" />
         </figure>
     </div>
