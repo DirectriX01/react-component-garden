@@ -18,9 +18,12 @@ const items = [
     },
   ];
 
-  
+function AccordionPage() {
   return (
     <div className="App">
       <Accordion items = {items} />
     </div>
   );
+}
+
+export default AccordionPage;

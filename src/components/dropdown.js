@@ -1,9 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { GoChevronDown } from 'react-icons/go';
+import Panel from './panel';
 
 function Dropdown({ options, value, onChange }) {
   const [isOpen, setIsOpen] = useState(false);
 
+  const ref = useRef();
+  // CLOSE DROPDOWN WHEN CLICKED OUTSIDE
+  useEffect(() => {
+    const onBodyClick = (event) => {
+      if (ref.current && ref.current.contains(event.target)) {
+        return;
+      }
+      setIsOpen(false);
+    };
+    document.addEventListener('click', onBodyClick, true);
+
+    return () => {
+      document.removeEventListener('click', onBodyClick, true);
+    };
+  }, []);
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
@@ -18,6 +34,7 @@ function Dropdown({ options, value, onChange }) {
   const renderedOptions = options.map((option) => {
     return (
       <div
+        
         className="hover:bg-sky-100 rounded cursor-pointer p-1"
         onClick={() => handleOptionClick(option)}
         key={option.value}
@@ -28,18 +45,18 @@ function Dropdown({ options, value, onChange }) {
   });
 
   return (
-    <div className="w-48 relative">
-      <div
-        className="flex justify-between items-center cursor-pointer border rounded p-3 shadow bg-white w-full"
+    <div className="w-48 relative" ref = {ref}>
+      <Panel
+        className="flex justify-between items-center cursor-pointer "
         onClick={handleClick}
       >
         {value?.label || 'Select...'}
         <GoChevronDown className="text-lg" />
-      </div>
+      </Panel>
       {isOpen && (
-        <div className="absolute top-full border rounded p-3 shadow bg-white w-full">
+        <Panel className="absolute top-full">
           {renderedOptions}
-        </div>
+        </Panel>
       )}
     </div>
   );
