@@ -11,15 +11,39 @@ function Modal({ children, onClose, actionBar }) {
   }, []);
 
   return ReactDOM.createPortal(
-    <div>
+    <div className="fixed top-0 left-0 h-full w-full flex items-center justify-center">
       <div
         onClick={onClose}
         className="fixed inset-0 bg-gray-300 opacity-80"
       ></div>
-      <div className="fixed inset-40 p-10 bg-white">
-        <div className="flex flex-col justify-between h-full">
-          {children}
-          <div className="flex justify-end ">{actionBar}</div>
+      <div className=" relative w-full max-w-md mx-auto my-auto p-6 bg-white rounded-lg shadow-md modal-content">
+        <div className="modal-header flex justify-between items-center pb-4 border-b">
+          <h2 className="text-lg font-medium">Modal Title</h2>
+          <button className="modal-close text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700">
+            <svg
+              className="h-6 w-6"
+              stroke="currentColor"
+              fill="none"
+              viewBox="0 0 24 24"
+              onClick={onClose}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+        <div className="modal-body py-4">
+          <p>{children}</p>
+        </div>
+        <div className="modal-footer flex justify-end pt-4">
+          {actionBar}
+          <button className="modal-close btn btn-outline" onClick={onClose}>
+            Cancel
+          </button>
         </div>
       </div>
     </div>,

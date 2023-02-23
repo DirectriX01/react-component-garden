@@ -29,8 +29,6 @@ function Button({
     }
   );
 
-  console.log(classes);
-
   return (
     <button {...rest} className={classes}>
       {children}

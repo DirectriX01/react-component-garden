@@ -6,6 +6,7 @@ import ColorPage from './pages/buttonPage';
 import ModalPage from './pages/modalPage';
 import TablePage from './pages/table';
 import CounterPage from './pages/counterPage';
+import SearchPage from './pages/searchPage';
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
         </Route>
         <Route path={'/Counter'}>
           <CounterPage initialValue={10} />
+        </Route>
+        <Route path={'/Search'}>
+          <SearchPage />
         </Route>
       </div>
     </div>

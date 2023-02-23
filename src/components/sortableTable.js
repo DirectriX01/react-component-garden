@@ -15,7 +15,7 @@ const SortableTable = (props) => {
         ...header,
         header: () => (
           <th
-            className="cursor-pointer hover:bg-gray-100"
+            className="cursor-pointer hover:bg-gray-100 px-6 py-3 text-left  font-medium text-gray-500 uppercase tracking-wider"
             onClick={() => setSortCol(header.label)}
           >
             <div className="flex items-center">

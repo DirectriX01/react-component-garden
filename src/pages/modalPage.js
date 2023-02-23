@@ -15,7 +15,11 @@ function ModalPage() {
 
   const actionBar = (
     <div>
-      <Button onClick={handleClose} primary>
+      <Button
+        onClick={handleClose}
+        primary
+        className="modal-action btn btn-primary mr-2"
+      >
         I Accept
       </Button>
     </div>
